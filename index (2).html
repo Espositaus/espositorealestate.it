@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esposito Real Estate | Video Marketing Immobiliare di Lusso</title>
+    <meta name="description" content="Video marketing cinematografico per immobili di lusso in Liguria. Reels, YouTube, riprese drone.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root{--black:#0a0a0a;--white:#fff;--sand:#d4c4a8;--gray:#888;--gray-dark:#151515}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden}
+        h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.05em}
+        
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,transparent 100%);transition:all .4s ease}
+        nav.scrolled{background:rgba(0,0,0,.95);padding:1rem 4rem;backdrop-filter:blur(10px)}
+        .logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;letter-spacing:.15em;color:var(--white);text-decoration:none}
+        .logo span{color:var(--sand)}
+        .nav-links{display:flex;gap:3rem;list-style:none}
+        .nav-links a{color:var(--white);text-decoration:none;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;position:relative;padding:.5rem 0}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--sand);transition:width .3s ease}
+        .nav-links a:hover::after{width:100%}
+        .nav-cta{background:transparent;border:1px solid var(--sand);color:var(--sand);padding:.6rem 1rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s ease;text-decoration:none}
+        .nav-cta:hover{background:var(--sand);color:var(--black)}
+        .menu-toggle{display:none;flex-direction:column;gap:6px;cursor:pointer;z-index:1001;margin-left:1rem}
+        .menu-toggle span{width:25px;height:1px;background:var(--white)}
+        .lang-switch{display:flex;gap:.3rem;margin-left:2rem}
+        .lang-btn{background:none;border:none;color:var(--gray);font-size:.65rem;cursor:pointer;padding:.25rem .4rem;transition:color .3s ease}
+        .lang-btn.active{color:var(--white)}
+        .lang-btn:hover{color:var(--sand)}
+
+        .hero-video-section{position:relative;height:100vh;min-height:500px;overflow:hidden}
+        .hero-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--gray-dark) 0%,var(--black) 50%,var(--gray-dark) 100%)}
+        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.5) 100%)}
+        .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:10}
+        .scroll-indicator span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+        .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--sand),transparent);animation:scrollPulse 2s ease infinite}
+
+        .hero-text-section{background:var(--black);padding:6rem 4rem;text-align:center}
+        .hero-text-content{max-width:900px;margin:0 auto}
+        .hero-eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sand);margin-bottom:1.5rem}
+        .hero-title{font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+        .hero-title em{font-style:italic;color:var(--sand)}
+        .hero-description{font-size:1rem;font-weight:300;max-width:550px;margin:0 auto 2.5rem;color:rgba(255,255,255,.7);line-height:1.8}
+        .hero-cta{display:inline-flex;align-items:center;gap:1rem;background:var(--sand);color:var(--black);padding:1.25rem 2.5rem;text-decoration:none;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;transition:all .4s ease}
+        .hero-cta:hover{background:var(--white);transform:translateY(-2px)}
+        .hero-cta svg{width:16px;height:16px;transition:transform .3s ease}
+        .hero-cta:hover svg{transform:translateX(5px)}
+
+        .section-title{font-size:clamp(2rem,5vw,4rem);margin-bottom:1rem;opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+        .section-title.visible{opacity:1;transform:translateY(0)}
+        .section-subtitle{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:.5rem}
+
+        .about{padding:8rem 4rem;background:var(--gray-dark)}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1400px;margin:0 auto}
+        .about-text{padding-top:2rem}
+        .about-text p{font-size:1rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.8);margin-bottom:2rem}
+        .about-stats{display:flex;gap:3rem;margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+        .stat{opacity:0;transform:translateY(20px);transition:all .6s ease}
+        .stat.visible{opacity:1;transform:translateY(0)}
+        .stat-number{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:300;color:var(--sand);line-height:1}
+        .stat-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-top:.5rem}
+        .about-team{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+        .team-member{position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:all .8s ease;cursor:pointer;text-decoration:none;color:inherit}
+        .team-member:visited,.team-member:link{color:inherit;text-decoration:none}
+        .team-member.visible{opacity:1;transform:translateY(0)}
+        .team-photo{width:100%;aspect-ratio:3/4;background:var(--black);position:relative;overflow:hidden}
+        .team-member:hover .team-photo-placeholder{transform:scale(1.05)}
+        .team-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gray-dark) 0%,var(--black) 100%);transition:transform .6s ease}
+        .team-photo-placeholder svg{width:60px;height:60px;opacity:.3}
+        .team-info{padding:1.5rem 0}
+        .team-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:.25rem;color:var(--white)}
+        .team-role{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sand)}
+        .team-link{font-size:.65rem;color:var(--gray);margin-top:.5rem;display:flex;align-items:center;gap:.5rem;transition:color .3s ease}
+        .team-member:hover .team-link{color:var(--sand)}
+
+        .services{padding:8rem 4rem;background:var(--black)}
+        .services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--sand),transparent)}
+        .services-header{text-align:center;max-width:700px;margin:0 auto 5rem}
+        .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1400px;margin:0 auto}
+        .service-card{background:var(--gray-dark);padding:2.5rem;position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:all .6s ease}
+        .service-card.visible{opacity:1;transform:translateY(0)}
+        .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--sand);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+        .service-card:hover::before{transform:scaleX(1)}
+        .service-icon{width:45px;height:45px;margin-bottom:1.5rem;color:var(--sand)}
+        .service-title{font-size:1.5rem;margin-bottom:1rem}
+        .service-description{font-size:.85rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:1.5rem}
+        .service-features{list-style:none}
+        .service-features li{font-size:.75rem;color:rgba(255,255,255,.6);padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:.75rem}
+        .service-features li::before{content:'';width:4px;height:4px;background:var(--sand);border-radius:50%}
+        .service-note{font-size:.7rem;color:var(--sand);margin-top:1.5rem;font-style:italic}
+
+        .results{padding:8rem 4rem;background:var(--gray-dark)}
+        .results-content{max-width:1200px;margin:0 auto;text-align:center}
+        .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:4rem}
+        .result-item{opacity:0;transform:translateY(20px);transition:all .6s ease}
+        .result-item.visible{opacity:1;transform:translateY(0)}
+        .result-number{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5rem);font-weight:300;line-height:1;color:var(--white)}
+        .result-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:1rem;line-height:1.5}
+        .result-source{font-size:.55rem;color:rgba(255,255,255,.4);margin-top:.5rem;font-style:italic}
+
+        .agent{padding:8rem 4rem;background:var(--black)}
+        .agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1400px;margin:0 auto;align-items:center}
+        .agent-content h2{margin-bottom:2rem}
+        .agent-content p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:1.5rem}
+        .agent-cta{display:inline-flex;align-items:center;gap:1rem;background:var(--sand);color:var(--black);padding:1rem 2rem;text-decoration:none;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s ease;margin-top:1rem}
+        .agent-cta:hover{background:var(--white)}
+        .agent-features{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+        .agent-feature{display:flex;align-items:flex-start;gap:1rem}
+        .agent-feature svg{width:24px;height:24px;color:var(--sand);flex-shrink:0;margin-top:.25rem}
+        .agent-feature-text h4{font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:500;margin-bottom:.25rem}
+        .agent-feature-text p{font-size:.75rem;color:var(--gray);line-height:1.6}
+        .agent-image-placeholder{width:100%;aspect-ratio:4/5;background:linear-gradient(135deg,var(--gray-dark) 0%,var(--black) 100%);display:flex;align-items:center;justify-content:center}
+        .agent-image-placeholder svg{width:80px;height:80px;opacity:.3}
+
+        .faq{padding:8rem 4rem;background:var(--gray-dark)}
+        .faq-header{text-align:center;max-width:700px;margin:0 auto 4rem}
+        .faq-grid{max-width:800px;margin:0 auto}
+        .faq-item{border-bottom:1px solid rgba(255,255,255,.1);opacity:0;transform:translateY(20px);transition:all .6s ease}
+        .faq-item.visible{opacity:1;transform:translateY(0)}
+        .faq-question{width:100%;padding:1.5rem 0;background:none;border:none;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.95rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+        .faq-question svg{width:20px;height:20px;color:var(--sand);transition:transform .3s ease;flex-shrink:0;margin-left:1rem}
+        .faq-item.active .faq-question svg{transform:rotate(45deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease}
+        .faq-item.active .faq-answer{max-height:200px}
+        .faq-answer p{padding-bottom:1.5rem;font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.8}
+
+        .contact{padding:8rem 4rem;background:var(--black)}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1400px;margin:0 auto}
+        .contact-info h2{margin-bottom:2rem}
+        .contact-info>p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:3rem}
+        .contact-methods{display:flex;flex-direction:column;gap:1.5rem}
+        .contact-method{display:flex;align-items:center;gap:1rem;color:var(--white);text-decoration:none;font-size:.85rem;transition:all .3s ease}
+        .contact-method:hover{color:var(--sand)}
+        .contact-method svg{width:22px;height:22px;color:var(--sand);flex-shrink:0}
+        .contact-form{display:flex;flex-direction:column;gap:1.5rem}
+        .form-group label{display:block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:1rem;background:var(--gray-dark);border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Montserrat',sans-serif;font-size:.85rem;transition:border-color .3s ease}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--sand)}
+        .form-group textarea{min-height:120px;resize:vertical}
+        .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+        .form-submit{display:inline-flex;align-items:center;justify-content:center;gap:1rem;background:var(--sand);color:var(--black);padding:1.25rem 2.5rem;border:none;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s ease}
+        .form-submit:hover{background:var(--white)}
+
+        footer{padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.1);background:var(--gray-dark)}
+        .footer-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;flex-wrap:wrap;gap:1.5rem}
+        .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;letter-spacing:.1em}
+        .footer-logo span{color:var(--sand)}
+        .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+        .footer-links a{color:var(--gray);text-decoration:none;font-size:.75rem;transition:color .3s ease}
+        .footer-links a:hover{color:var(--sand)}
+        .footer-social{display:flex;gap:1.5rem}
+        .footer-social a{color:var(--gray);transition:color .3s ease}
+        .footer-social a:hover{color:var(--sand)}
+        .footer-social svg{width:20px;height:20px}
+        .footer-copy{font-size:.7rem;color:var(--gray)}
+
+        @keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.5;transform:scaleY(.8)}}
+
+        @media(max-width:1024px){
+            nav{padding:1rem 1.5rem}
+            .nav-links{display:none}
+            .menu-toggle{display:flex}
+            .nav-cta{padding:.5rem .75rem;font-size:.55rem}
+            .about-grid,.contact-grid,.agent-grid{grid-template-columns:1fr;gap:4rem}
+            .services-grid,.results-grid{grid-template-columns:1fr}
+            .agent-features{grid-template-columns:1fr}
+        }
+        @media(max-width:768px){
+            .hero-video-section{height:60vh;min-height:400px}
+            .hero-text-section,.about,.services,.results,.contact,.agent,.faq{padding:5rem 1.5rem}
+            .about-team,.about-stats{grid-template-columns:1fr}
+            .about-stats{flex-direction:column;gap:1.5rem}
+            .footer-content{flex-direction:column;text-align:center}
+            .footer-links{justify-content:center}
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="#" class="logo">ESPOSITO <span>REAL ESTATE</span></a>
+        <ul class="nav-links">
+            <li><a href="#about" data-it="Chi Siamo" data-en="About" data-fr="À Propos" data-es="Nosotros">Chi Siamo</a></li>
+            <li><a href="#services" data-it="Servizi" data-en="Services" data-fr="Services" data-es="Servicios">Servizi</a></li>
+            <li><a href="#agent" data-it="Vendi Casa" data-en="Sell Your Home" data-fr="Vendre" data-es="Vender">Vendi Casa</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div style="display:flex;align-items:center">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="it">IT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <a href="#contact" class="nav-cta" data-it="Contattaci" data-en="Contact" data-fr="Contact" data-es="Contacto">Contattaci</a>
+        </div>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </nav>
+
+    <section class="hero-video-section">
+        <div class="hero-placeholder"></div>
+        <div class="hero-overlay"></div>
+        <div class="scroll-indicator">
+            <span data-it="Scorri" data-en="Scroll" data-fr="Défiler" data-es="Deslizar">Scorri</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="hero-text-section">
+        <div class="hero-text-content">
+            <p class="hero-eyebrow" data-it="Video Marketing Immobiliare" data-en="Real Estate Video Marketing" data-fr="Marketing Vidéo Immobilier" data-es="Video Marketing Inmobiliario">Video Marketing Immobiliare</p>
+            <h1 class="hero-title" data-it="Vendiamo il tuo immobile con <em>video cinematografici</em>" data-en="We sell your property with <em>cinematic videos</em>" data-fr="Nous vendons votre bien avec des <em>vidéos cinématographiques</em>" data-es="Vendemos tu propiedad con <em>videos cinematográficos</em>">Vendiamo il tuo immobile con <em>video cinematografici</em></h1>
+            <p class="hero-description" data-it="Produciamo contenuti video professionali che generano lead qualificati per immobili di lusso in Liguria." data-en="We produce professional video content that generates qualified leads for luxury properties in Liguria." data-fr="Nous produisons du contenu vidéo professionnel qui génère des contacts qualifiés pour les propriétés de luxe en Ligurie." data-es="Producimos contenido de video profesional que genera contactos cualificados para propiedades de lujo en Liguria.">Produciamo contenuti video professionali che generano lead qualificati per immobili di lusso in Liguria.</p>
+            <a href="#contact" class="hero-cta">
+                <span data-it="Richiedi un Preventivo" data-en="Request a Quote" data-fr="Demander un Devis" data-es="Solicitar Presupuesto">Richiedi un Preventivo</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="section-subtitle" data-it="Chi Siamo" data-en="About Us" data-fr="À Propos" data-es="Nosotros">Chi Siamo</p>
+                <h2 class="section-title" data-it="Trasformiamo immobili in storie da vendere" data-en="We transform properties into stories that sell" data-fr="Nous transformons les biens en histoires qui vendent" data-es="Transformamos propiedades en historias que venden">Trasformiamo immobili in storie da vendere</h2>
+                <p data-it="Esposito Real Estate nasce dall'incontro tra un agente immobiliare e un videomaker. Da amici siamo diventati collaboratori, uniti dalla stessa visione: ogni immobile merita di essere raccontato, non solo mostrato." data-en="Esposito Real Estate was born from the meeting of a real estate agent and a videomaker. From friends we became collaborators, united by the same vision: every property deserves to be told, not just shown." data-fr="Esposito Real Estate est né de la rencontre entre un agent immobilier et un vidéaste. D'amis, nous sommes devenus collaborateurs, unis par la même vision." data-es="Esposito Real Estate nació del encuentro entre un agente inmobiliario y un videomaker. De amigos nos convertimos en colaboradores, unidos por la misma visión.">Esposito Real Estate nasce dall'incontro tra un agente immobiliare e un videomaker. Da amici siamo diventati collaboratori, uniti dalla stessa visione: ogni immobile merita di essere raccontato, non solo mostrato.</p>
+                <p data-it="Conosciamo i social perché sono il nostro linguaggio. Sappiamo cosa funziona, cosa cattura l'attenzione, cosa genera contatti veri. Nessuna provvigione sui lead: paghi il video, i contatti sono tuoi." data-en="We know social media because it's our language. We know what works, what captures attention, what generates real contacts. No commission on leads: you pay for the video, the contacts are yours." data-fr="Nous connaissons les réseaux sociaux car c'est notre langage. Pas de commission sur les leads: vous payez la vidéo, les contacts sont à vous." data-es="Conocemos las redes sociales porque son nuestro lenguaje. Sin comisión sobre los leads: pagas el video, los contactos son tuyos.">Conosciamo i social perché sono il nostro linguaggio. Sappiamo cosa funziona, cosa cattura l'attenzione, cosa genera contatti veri. Nessuna provvigione sui lead: paghi il video, i contatti sono tuoi.</p>
+                <p data-it="Anche se vendi privatamente, meriti un video professionale. Ti diamo gli strumenti delle agenzie di lusso senza i loro costi." data-en="Even if you sell privately, you deserve a professional video. We give you the tools of luxury agencies without their costs." data-fr="Même si vous vendez en privé, vous méritez une vidéo professionnelle." data-es="Aunque vendas de forma privada, mereces un video profesional.">Anche se vendi privatamente, meriti un video professionale. Ti diamo gli strumenti delle agenzie di lusso senza i loro costi.</p>
+                <div class="about-stats">
+                    <div class="stat"><div class="stat-number">+403%</div><div class="stat-label" data-it="Richieste con Video" data-en="Inquiries with Video" data-fr="Demandes avec Vidéo" data-es="Consultas con Video">Richieste con Video</div></div>
+                    <div class="stat"><div class="stat-number">73%</div><div class="stat-label" data-it="Preferisce Agenti Video" data-en="Prefer Video Agents" data-fr="Préfèrent Agents Vidéo" data-es="Prefieren Agentes Video">Preferisce Agenti Video</div></div>
+                    <div class="stat"><div class="stat-number">9%</div><div class="stat-label" data-it="Agenti Usa Video" data-en="Agents Use Video" data-fr="Agents Utilisent Vidéo" data-es="Agentes Usan Video">Agenti Usa Video</div></div>
+                </div>
+            </div>
+            <div class="about-team">
+                <a href="https://www.instagram.com/espo_immobiliare/" target="_blank" class="team-member">
+                    <div class="team-photo"><img src="samuele.jpg" alt="Samuele Esposito" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Samuele Esposito</h3>
+                        <p class="team-role">Property Presenter</p>
+                        <p class="team-link">@espo_immobiliare</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/matthew__mq/" target="_blank" class="team-member">
+                    <div class="team-photo"><img src="matteo.jpg" alt="Matteo" style="width:100%;height:100%;object-fit:cover;object-position:center;"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Matteo</h3>
+                        <p class="team-role">Videomaker</p>
+                        <p class="team-link">@matthew__mq</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services-header">
+            <p class="section-subtitle" data-it="I Nostri Servizi" data-en="Our Services" data-fr="Nos Services" data-es="Nuestros Servicios">I Nostri Servizi</p>
+            <h2 class="section-title" data-it="Ogni formato per ogni piattaforma" data-en="Every format for every platform" data-fr="Chaque format pour chaque plateforme" data-es="Cada formato para cada plataforma">Ogni formato per ogni piattaforma</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <h3 class="service-title" data-it="Video Reels" data-en="Video Reels" data-fr="Vidéos Reels" data-es="Video Reels">Video Reels</h3>
+                <p class="service-description" data-it="Contenuti verticali ottimizzati per Instagram e TikTok. 45-90 secondi di puro impatto visivo." data-en="Vertical content optimized for Instagram and TikTok. 45-90 seconds of pure visual impact." data-fr="Contenu vertical optimisé pour Instagram et TikTok. 45-90 secondes d'impact visuel." data-es="Contenido vertical optimizado para Instagram y TikTok. 45-90 segundos de impacto visual.">Contenuti verticali ottimizzati per Instagram e TikTok. 45-90 secondi di puro impatto visivo.</p>
+                <ul class="service-features">
+                    <li data-it="Formato 9:16 verticale" data-en="9:16 vertical format" data-fr="Format 9:16 vertical" data-es="Formato 9:16 vertical">Formato 9:16 verticale</li>
+                    <li data-it="Montaggio dinamico" data-en="Dynamic editing" data-fr="Montage dynamique" data-es="Edición dinámica">Montaggio dinamico</li>
+                    <li data-it="Musica trending" data-en="Trending music" data-fr="Musique tendance" data-es="Música trending">Musica trending</li>
+                    <li data-it="Pubblicazione sui nostri canali" data-en="Publication on our channels" data-fr="Publication sur nos chaînes" data-es="Publicación en nuestros canales">Pubblicazione sui nostri canali</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h3 class="service-title" data-it="Video YouTube" data-en="YouTube Videos" data-fr="Vidéos YouTube" data-es="Videos YouTube">Video YouTube</h3>
+                <p class="service-description" data-it="Tour completi con presentazione professionale. Storytelling immersivo che racconta ogni dettaglio." data-en="Complete tours with professional presentation. Immersive storytelling that tells every detail." data-fr="Visites complètes avec présentation professionnelle. Narration immersive." data-es="Tours completos con presentación profesional. Storytelling inmersivo.">Tour completi con presentazione professionale. Storytelling immersivo che racconta ogni dettaglio.</p>
+                <ul class="service-features">
+                    <li data-it="Formato 16:9 cinematico" data-en="16:9 cinematic format" data-fr="Format 16:9 cinématique" data-es="Formato 16:9 cinematográfico">Formato 16:9 cinematico</li>
+                    <li data-it="Presentazione in video" data-en="In-video presentation" data-fr="Présentation en vidéo" data-es="Presentación en video">Presentazione in video</li>
+                    <li data-it="Color grading avanzato" data-en="Advanced color grading" data-fr="Étalonnage avancé" data-es="Corrección de color avanzada">Color grading avanzato</li>
+                    <li data-it="Durata personalizzata" data-en="Custom duration" data-fr="Durée personnalisée" data-es="Duración personalizada">Durata personalizzata</li>
+                </ul>
+                <p class="service-note" data-it="* Preventivo in base alla durata del video" data-en="* Quote based on video duration" data-fr="* Devis selon la durée" data-es="* Presupuesto según duración">* Preventivo in base alla durata del video</p>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h3 class="service-title" data-it="Riprese Drone" data-en="Drone Footage" data-fr="Prises de Vue Drone" data-es="Tomas con Drone">Riprese Drone</h3>
+                <p class="service-description" data-it="Prospettive aeree mozzafiato che mostrano la proprietà e il territorio circostante." data-en="Breathtaking aerial perspectives showing the property and surrounding territory." data-fr="Perspectives aériennes montrant la propriété et le territoire environnant." data-es="Perspectivas aéreas que muestran la propiedad y el territorio circundante.">Prospettive aeree mozzafiato che mostrano la proprietà e il territorio circostante.</p>
+                <ul class="service-features">
+                    <li>4K Ultra HD</li>
+                    <li data-it="Pilota certificato ENAC" data-en="ENAC certified pilot" data-fr="Pilote certifié ENAC" data-es="Piloto certificado ENAC">Pilota certificato ENAC</li>
+                    <li data-it="Panoramiche del territorio" data-en="Territory panoramas" data-fr="Panoramas du territoire" data-es="Panorámicas del territorio">Panoramiche del territorio</li>
+                    <li data-it="Incluso nei pacchetti" data-en="Included in packages" data-fr="Inclus dans les forfaits" data-es="Incluido en los paquetes">Incluso nei pacchetti</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="results" id="results">
+        <div class="results-content">
+            <p class="section-subtitle" data-it="Perché il Video" data-en="Why Video" data-fr="Pourquoi la Vidéo" data-es="Por Qué el Video">Perché il Video</p>
+            <h2 class="section-title" data-it="I numeri parlano chiaro" data-en="The numbers speak clearly" data-fr="Les chiffres parlent" data-es="Los números hablan claro">I numeri parlano chiaro</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">+403%</div>
+                    <p class="result-label" data-it="Richieste in più per annunci con video" data-en="More inquiries for listings with video" data-fr="Plus de demandes pour les annonces avec vidéo" data-es="Más consultas para anuncios con video">Richieste in più per annunci con video</p>
+                    <p class="result-source">NAR 2025</p>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">73%</div>
+                    <p class="result-label" data-it="Proprietari preferisce agenti che usano video" data-en="Homeowners prefer agents who use video" data-fr="Propriétaires préfèrent les agents vidéo" data-es="Propietarios prefieren agentes con video">Proprietari preferisce agenti che usano video</p>
+                    <p class="result-source">NAR 2025</p>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">9%</div>
+                    <p class="result-label" data-it="Agenti immobiliari usa video (opportunità!)" data-en="Agents use video (opportunity!)" data-fr="Agents utilisent la vidéo (opportunité!)" data-es="Agentes usan video (¡oportunidad!)">Agenti immobiliari usa video (opportunità!)</p>
+                    <p class="result-source">Wyzowl 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="agent" id="agent">
+        <div class="agent-grid">
+            <div class="agent-content">
+                <p class="section-subtitle" data-it="Vendi con Samuele" data-en="Sell with Samuele" data-fr="Vendez avec Samuele" data-es="Vende con Samuele">Vendi con Samuele</p>
+                <h2 class="section-title" data-it="Vuoi vendere o affittare in Liguria?" data-en="Want to sell or rent in Liguria?" data-fr="Vous voulez vendre ou louer en Ligurie?" data-es="¿Quieres vender o alquilar en Liguria?">Vuoi vendere o affittare in Liguria?</h2>
+                <p data-it="Oltre a creare video, sono agente immobiliare IAD specializzato nella costa ligure. Portofino, Santa Margherita, Cinque Terre, Genova: conosco ogni angolo di questo territorio." data-en="In addition to creating videos, I am an IAD real estate agent specializing in the Ligurian coast. Portofino, Santa Margherita, Cinque Terre, Genoa." data-fr="En plus de créer des vidéos, je suis agent immobilier IAD spécialisé sur la côte ligure." data-es="Además de crear videos, soy agente inmobiliario IAD especializado en la costa de Liguria.">Oltre a creare video, sono agente immobiliare IAD specializzato nella costa ligure. Portofino, Santa Margherita, Cinque Terre, Genova: conosco ogni angolo di questo territorio.</p>
+                <p data-it="Affidami il tuo immobile e avrai il vantaggio competitivo del video marketing incluso. Il tuo annuncio non sarà uno dei tanti: sarà quello che tutti ricordano." data-en="Trust me with your property and you'll have the competitive advantage of video marketing included." data-fr="Confiez-moi votre bien et vous aurez l'avantage du marketing vidéo inclus." data-es="Confíame tu propiedad y tendrás la ventaja del video marketing incluido.">Affidami il tuo immobile e avrai il vantaggio competitivo del video marketing incluso. Il tuo annuncio non sarà uno dei tanti: sarà quello che tutti ricordano.</p>
+                <div class="agent-features">
+                    <div class="agent-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div class="agent-feature-text"><h4 data-it="Video Incluso" data-en="Video Included" data-fr="Vidéo Incluse" data-es="Video Incluido">Video Incluso</h4><p data-it="Marketing cinematografico per il tuo immobile" data-en="Cinematic marketing for your property" data-fr="Marketing cinématographique" data-es="Marketing cinematográfico">Marketing cinematografico per il tuo immobile</p></div>
+                    </div>
+                    <div class="agent-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <div class="agent-feature-text"><h4 data-it="Esperto Locale" data-en="Local Expert" data-fr="Expert Local" data-es="Experto Local">Esperto Locale</h4><p data-it="Conosco il mercato ligure in profondità" data-en="Deep knowledge of the Ligurian market" data-fr="Connaissance approfondie du marché" data-es="Conocimiento profundo del mercado">Conosco il mercato ligure in profondità</p></div>
+                    </div>
+                    <div class="agent-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        <div class="agent-feature-text"><h4 data-it="Clienti Internazionali" data-en="International Clients" data-fr="Clients Internationaux" data-es="Clientes Internacionales">Clienti Internazionali</h4><p data-it="Raggiungo acquirenti in tutto il mondo" data-en="I reach buyers worldwide" data-fr="J'atteins des acheteurs mondiaux" data-es="Alcanzo compradores mundiales">Raggiungo acquirenti in tutto il mondo</p></div>
+                    </div>
+                    <div class="agent-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <div class="agent-feature-text"><h4 data-it="Vendite e Affitti" data-en="Sales and Rentals" data-fr="Ventes et Locations" data-es="Ventas y Alquileres">Vendite e Affitti</h4><p data-it="Anche case vacanza e affitti turistici" data-en="Also vacation homes and tourist rentals" data-fr="Aussi maisons de vacances et locations" data-es="También casas vacacionales y alquileres">Anche case vacanza e affitti turistici</p></div>
+                    </div>
+                </div>
+                <a href="#contact" class="agent-cta">
+                    <span data-it="Valuta il Tuo Immobile" data-en="Value Your Property" data-fr="Évaluez Votre Bien" data-es="Valora Tu Propiedad">Valuta il Tuo Immobile</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+            <div class="agent-image">
+                <div class="agent-image-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="faq-header">
+            <p class="section-subtitle" data-it="Domande Frequenti" data-en="FAQ" data-fr="Questions Fréquentes" data-es="Preguntas Frecuentes">Domande Frequenti</p>
+            <h2 class="section-title" data-it="Hai domande?" data-en="Have questions?" data-fr="Des questions?" data-es="¿Tienes preguntas?">Hai domande?</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Quanto costa un video?" data-en="How much does a video cost?" data-fr="Combien coûte une vidéo?" data-es="¿Cuánto cuesta un video?">Quanto costa un video?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="Ogni progetto è diverso. Il costo dipende dal tipo di video, dalla durata e dalla complessità. Contattaci per un preventivo gratuito." data-en="Every project is different. Cost depends on video type, duration and complexity. Contact us for a free quote." data-fr="Chaque projet est différent. Contactez-nous pour un devis gratuit." data-es="Cada proyecto es diferente. Contáctanos para un presupuesto gratis.">Ogni progetto è diverso. Il costo dipende dal tipo di video, dalla durata e dalla complessità. Contattaci per un preventivo gratuito.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Quanto tempo ci vuole?" data-en="How long does it take?" data-fr="Combien de temps?" data-es="¿Cuánto tiempo toma?">Quanto tempo ci vuole?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="5-7 giorni lavorativi per i Reels, tempi variabili per YouTube. Consegne urgenti disponibili." data-en="5-7 business days for Reels, variable for YouTube. Urgent delivery available." data-fr="5-7 jours ouvrables pour les Reels. Livraison urgente disponible." data-es="5-7 días laborables para Reels. Entrega urgente disponible.">5-7 giorni lavorativi per i Reels, tempi variabili per YouTube. Consegne urgenti disponibili.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Come funziona la consegna dei lead?" data-en="How does lead delivery work?" data-fr="Comment fonctionne la livraison des leads?" data-es="¿Cómo funciona la entrega de leads?">Come funziona la consegna dei lead?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="Pubblichiamo il video sui nostri canali. Ogni richiesta viene girata a te via WhatsApp o email. Zero provvigioni." data-en="We publish on our channels. Every inquiry is forwarded to you via WhatsApp or email. Zero commissions." data-fr="Nous publions sur nos chaînes. Chaque demande vous est transmise. Zéro commission." data-es="Publicamos en nuestros canales. Cada consulta se te reenvía. Cero comisiones.">Pubblichiamo il video sui nostri canali. Ogni richiesta viene girata a te via WhatsApp o email. Zero provvigioni.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Fate anche video per case vacanza?" data-en="Do you also make videos for vacation rentals?" data-fr="Faites-vous aussi des vidéos pour locations vacances?" data-es="¿También hacen videos para alquileres vacacionales?">Fate anche video per case vacanza?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="Assolutamente sì! I video funzionano benissimo per promuovere case vacanza e affitti turistici. Aumentano le prenotazioni e giustificano prezzi più alti." data-en="Absolutely! Videos work great for vacation rentals. They increase bookings and justify higher prices." data-fr="Absolument! Les vidéos fonctionnent très bien pour les locations de vacances." data-es="¡Absolutamente! Los videos funcionan muy bien para alquileres vacacionales.">Assolutamente sì! I video funzionano benissimo per promuovere case vacanza e affitti turistici. Aumentano le prenotazioni e giustificano prezzi più alti.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Posso usare il video per i miei canali?" data-en="Can I use the video on my channels?" data-fr="Puis-je utiliser la vidéo sur mes chaînes?" data-es="¿Puedo usar el video en mis canales?">Posso usare il video per i miei canali?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="Sì! Ricevi il video in alta qualità senza watermark. Puoi usarlo ovunque." data-en="Yes! You receive the video in high quality without watermark. Use it anywhere." data-fr="Oui! Vous recevez la vidéo en haute qualité sans filigrane." data-es="¡Sí! Recibes el video en alta calidad sin marca de agua.">Sì! Ricevi il video in alta qualità senza watermark. Puoi usarlo ovunque.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span data-it="Lavorate solo in Liguria?" data-en="Do you only work in Liguria?" data-fr="Travaillez-vous uniquement en Ligurie?" data-es="¿Solo trabajan en Liguria?">Lavorate solo in Liguria?</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg></button>
+                <div class="faq-answer"><p data-it="La Liguria è la nostra base, ma valutiamo progetti in altre zone. Contattaci!" data-en="Liguria is our base, but we evaluate projects elsewhere. Contact us!" data-fr="La Ligurie est notre base, mais nous évaluons d'autres projets." data-es="Liguria es nuestra base, pero evaluamos otros proyectos.">La Liguria è la nostra base, ma valutiamo progetti in altre zone. Contattaci!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p class="section-subtitle" data-it="Contatti" data-en="Contact" data-fr="Contact" data-es="Contacto">Contatti</p>
+                <h2 class="section-title" data-it="Parliamo del tuo progetto" data-en="Let's talk about your project" data-fr="Parlons de votre projet" data-es="Hablemos de tu proyecto">Parliamo del tuo progetto</h2>
+                <p data-it="Hai un immobile da valorizzare? Contattaci per una consulenza gratuita." data-en="Have a property to enhance? Contact us for a free consultation." data-fr="Vous avez un bien à valoriser? Contactez-nous." data-es="¿Tienes una propiedad? Contáctanos.">Hai un immobile da valorizzare? Contattaci per una consulenza gratuita.</p>
+                <div class="contact-methods">
+                    <a href="https://wa.me/393286456865" target="_blank" class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span>+39 328 645 6865</span>
+                    </a>
+                    <a href="https://www.instagram.com/espo_immobiliare/" target="_blank" class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <span>@espo_immobiliare</span>
+                    </a>
+                    <a href="mailto:info@espositorealestate.it" class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span>info@espositorealestate.it</span>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group"><label data-it="Nome" data-en="Name" data-fr="Nom" data-es="Nombre">Nome</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+                <div class="form-group"><label data-it="Telefono" data-en="Phone" data-fr="Téléphone" data-es="Teléfono">Telefono</label><input type="tel" name="phone"></div>
+                <div class="form-group"><label data-it="Servizio" data-en="Service" data-fr="Service" data-es="Servicio">Servizio</label>
+                    <select name="service">
+                        <option value="">Seleziona...</option>
+                        <option value="reel">Video Reel</option>
+                        <option value="youtube">Video YouTube</option>
+                        <option value="pacchetto">Pacchetto Completo</option>
+                        <option value="vendita">Vendere con Samuele</option>
+                        <option value="affitto">Affittare con Samuele</option>
+                        <option value="vacanza">Casa Vacanza</option>
+                    </select>
+                </div>
+                <div class="form-group"><label data-it="Messaggio" data-en="Message" data-fr="Message" data-es="Mensaje">Messaggio</label><textarea name="message" placeholder="Raccontaci del tuo immobile..."></textarea></div>
+                <button type="submit" class="form-submit">
+                    <span data-it="Richiedi Preventivo" data-en="Request Quote" data-fr="Demander Devis" data-es="Solicitar Presupuesto">Richiedi Preventivo</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">ESPOSITO <span>REAL ESTATE</span></div>
+            <div class="footer-links">
+                <a href="#about" data-it="Chi Siamo" data-en="About" data-fr="À Propos" data-es="Nosotros">Chi Siamo</a>
+                <a href="#services" data-it="Servizi" data-en="Services" data-fr="Services" data-es="Servicios">Servizi</a>
+                <a href="#agent" data-it="Vendi Casa" data-en="Sell" data-fr="Vendre" data-es="Vender">Vendi Casa</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/espo_immobiliare/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg></a>
+                <a href="https://wa.me/393286456865" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></a>
+                <a href="https://www.tiktok.com/@espo_immobiliare" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg></a>
+                <a href="https://www.youtube.com/@espo_immobiliare" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            </div>
+            <p class="footer-copy">© 2026 Esposito Real Estate</p>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 100));
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.section-title, .stat, .team-member, .service-card, .result-item, .faq-item').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.service-card').forEach((c, i) => c.style.transitionDelay = `${i * 0.15}s`);
+        document.querySelectorAll('.stat').forEach((s, i) => s.style.transitionDelay = `${i * 0.1}s`);
+        document.querySelectorAll('.result-item').forEach((r, i) => r.style.transitionDelay = `${i * 0.15}s`);
+        document.querySelectorAll('.faq-item').forEach((f, i) => f.style.transitionDelay = `${i * 0.1}s`);
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => btn.parentElement.classList.toggle('active'));
+        });
+
+        let currentLang = 'it';
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                if (lang === currentLang) return;
+                currentLang = lang;
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                    const text = el.getAttribute('data-' + lang);
+                    if (text) el.innerHTML = text;
+                });
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const msgs = {it:'Grazie! Ti contatteremo pres
